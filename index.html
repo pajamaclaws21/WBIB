@@ -4,16 +4,15 @@
     <title>WBIB Viewer</title>
   </head>
   <body>
-    <object id="embedsite" data="https://theuselessweb.com" type="text/html" style="min-height:90vh;width:100%"></object>
-    <input type="text" id="siteinput" name="siteinput" placeholder="Website" draggable="false"> 
-    <input id="goweb" type="button" value="Go!"</input>
-  </body>
-  <script>
+    <script>
     function setWebpage() {
       var obj = document.getElementById('embedsite'); 
       var site = document.getElementById('siteinput'); 
       obj.data = site.value
     }
-    document.getElementById("goweb").onclick = setWebpage();
   </script>
+    <object id="embedsite" data="https://theuselessweb.com" type="text/html" style="min-height:90vh;width:100%"></object>
+    <input type="text" id="siteinput" name="siteinput" placeholder="Website" draggable="false"> 
+    <input id="goweb" type="button" value="Go!" onclick="setWebpage();" </input>
+  </body>
 </html>
