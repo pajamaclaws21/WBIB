@@ -6,6 +6,14 @@
   <body>
     <object id="embedsite" data="https://theuselessweb.com" type="text/html" style="min-height:90vh;width:100%"></object>
     <input type="text" id="siteinput" name="siteinput" placeholder="Website" draggable="false"> 
-    <input id="clickMe" type="button" value="Go!" onclick="var obj = document.getElementById('embedsite'); var site = document.getElementById('siteinput'); obj.data = site.value"</input>
+    <input id="goweb" type="button" value="Go!"</input>
   </body>
+  <script>
+    function setWebpage() {
+      var obj = document.getElementById('embedsite'); 
+      var site = document.getElementById('siteinput'); 
+      obj.data = site.value
+    }
+    document.getElementById("goweb").onclick = setWebpage();
+  </script>
 </html>
