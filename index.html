@@ -10,7 +10,8 @@
 function myFunction() {
 	document.getElementById("embedsite").innerHTML = 'Loading...';
 	var site = document.getElementById('siteinput');
-	fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(site)}`)
+	var sitevalue = site.value
+	fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(sitevalue)}`)
                     .then(response => {
                       if (response.ok) return response.json()
                       throw new Error('Network response was not ok.')
