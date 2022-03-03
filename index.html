@@ -17,8 +17,7 @@ var site = document.getElementById('siteinput');
 var text1 = "https://cors-anywhere.herokuapp.com/";
 var restext = text1.concat(site.value);
 var imglink = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://' + site + '&size=16'
-document.querySelector("link[rel='shortcut icon']").href = imagelink;
-document.querySelector("link[rel*='icon']").href = imagelink;
+document.getElementById('favicon').setAttribute('href', imglink)
 request.open("GET", restext, true);
 request.send(null);
 request.onreadystatechange = function() {
