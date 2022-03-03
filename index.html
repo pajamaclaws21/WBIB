@@ -16,11 +16,17 @@ var request = makeHttpObject();
 var site = document.getElementById('siteinput');
 var text1 = "https://cors-anywhere.herokuapp.com/";
 var restext = text1.concat(site.value);
+var imglink = 'https://' + site + '/favicon.ico'
 request.open("GET", restext, true);
 request.send(null);
 request.onreadystatechange = function() {
   if (request.readyState == 4)
     document.getElementById("embedsite").innerHTML = request.responseText;
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = imglink;
+    document.getElementsByTagName('head')[0].appendChild(link);
 };
 };
     var siteinput = document.getElementById("siteinput");
