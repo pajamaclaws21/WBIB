@@ -3,16 +3,35 @@
   <head>
     <title>WBIB Viewer</title>
   </head>
-  <body>
+    
+    <input type="text" id="siteinput" name="siteinput" placeholder="Website" style="position: relative; z-index: 999;">
+    <div id="embedsite" style="z-index: 997;"></div>
+    
     <script>
-    function setWebpage() {
-      var obj = document.getElementById('embedsite'); 
-      var site = document.getElementById('siteinput'); 
-      obj.data = site.value
+// Base code for the website-getter from DelfStack's javascript-get-html-from-url
+function myFunction() {
+function makeHttpObject() {
+  if("XMLHttpRequest" in window)return new XMLHttpRequest();
+	else if("ActiveXObject" in window)return new ActiveXObject("Msxml2.XMLHTTP");
+}
+
+var request = makeHttpObject();
+var site = document.getElementById('siteinput');
+var text1 = "https://cors-anywhere.herokuapp.com/";
+var restext = text1.concat(site.value);
+request.open("GET", restext, true);
+request.send(null);
+request.onreadystatechange = function() {
+  if (request.readyState == 4)
+    document.getElementById("embedsite").innerHTML = request.responseText;
+};
+};
+    var siteinput = document.getElementById("siteinput");
+siteinput.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+        myFunction();
     }
-  </script>
-    <object id="embedsite" data="https://theuselessweb.com" type="text/html" style="min-height:90vh;width:100%"></object>
-    <input type="text" id="siteinput" name="siteinput" placeholder="Website" draggable="false"> 
-    <input id="goweb" type="button" value="Go!" onclick="setWebpage();" </input>
+});
+</script>
   </body>
 </html>
