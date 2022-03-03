@@ -8,7 +8,14 @@
     <div id="embedsite" style="z-index: 997;"></div>
     <script>
 function myFunction() {
-function makeHttpObject() {
+	var site = document.getElementById('siteinput');
+	fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(siteinput)}`)
+                    .then(response => {
+                      if (response.ok) return response.json()
+                      throw new Error('Network response was not ok.')
+                    })
+                    .then(data => document.getElementById("embedsite").innerHTML = data.contents);
+/* function makeHttpObject() {
   if("XMLHttpRequest" in window)return new XMLHttpRequest();
 	else if("ActiveXObject" in window)return new ActiveXObject("Msxml2.XMLHTTP");
 }
@@ -16,6 +23,7 @@ var request = makeHttpObject();
 var site = document.getElementById('siteinput');
 var text1 = "https://cors-anywhere.herokuapp.com/";
 var restext = text1.concat(site.value);
+// Following imglink and document things are broken :(
 // var imglink = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://' + site + '&size=16'
 // document.getElementById('favicon').setAttribute('href', imglink)
 request.open("GET", restext, true);
@@ -23,7 +31,7 @@ request.send(null);
 request.onreadystatechange = function() {
   if (request.readyState == 4)
     document.getElementById("embedsite").innerHTML = request.responseText;
-};
+}; */
 };
     var siteinput = document.getElementById("siteinput");
 siteinput.addEventListener("keydown", function (e) {
