@@ -9,8 +9,7 @@
     <script>
 function myFunction() {
 	document.getElementById("embedsite").innerHTML = 'Loading...';
-	var site = document.getElementById('siteinput');
-	var sitevalue = site.value
+	var site = 'https://' + document.getElementById('siteinput').value;
 	fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(sitevalue)}`)
                     .then(response => {
                       if (response.ok) return response.json()
