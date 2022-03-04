@@ -16,14 +16,7 @@ function myFunction() {
 		      document.getElementById("embedsite").innerHTML = 'Uh-oh, the website has run into an error. (Error code: Proxy&RES-NOT-OK)';
                       throw new Error('Network response was not ok.')
                     })
-                    .then(data => document.getElementById("embedsite").innerHTML = data.contents;
-			  var iconlink = site.split("."); //
-	                  var iconlinklength = iconlink.length - 1;
-			  var iconlinkdomain = iconlink[iconlinklength].split("/")[0];
-			  var iconlink = site.split(iconlinkdomain)[0] + iconlinkdomain
-			  var iconlinkfinal = 'https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=' + iconlink + '&size=16';
-			  document.getElementById('favicon').setAttribute('href', iconlinkfinal); //
-			 );
+                    .then(data => document.getElementById("embedsite").innerHTML = data.contents);
 };
     var siteinput = document.getElementById("siteinput");
 siteinput.addEventListener("keydown", function (e) {
