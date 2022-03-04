@@ -21,7 +21,7 @@ function myFunction() {
 	                  var iconlinklength = iconlink.length - 1;
 			  var iconlinkdomain = iconlink[iconlinklength].split("/")[0];
 			  var iconlink = site.split(iconlinkdomain)[0] + iconlinkdomain
-			  var iconlinkfinal = iconlink + '/favicon.ico';
+			  var iconlinkfinal = 'https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=' + iconlink + '&size=16';
 			  document.getElementById('favicon').setAttribute('href', iconlinkfinal); //
 			 );
 };
