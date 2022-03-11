@@ -3,13 +3,46 @@
   <head>
     <title>WBIB Viewer</title>
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+<style>
+	iframe {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 997;
+    height: 100%;
+	}
+	
+	input.site {
+	position: relative;
+	z-index: 999;
+	width: 100px;
+	opacity: 0.2;
+	}
+	
+	input.site:hover, input.site:focus {
+	position: relative;
+	z-index: 999;
+	width: 200px;
+	opacity: 1;
+	}
+</style>
   </head>
   <body>
-    <input type="text" id="siteinput" name="siteinput" placeholder="Website" style="position: relative; z-index: 999;">
-    <div id="embedsite" style="z-index: 997;"></div>
+    <input class="site" type="text" id="siteinput" name="siteinput" placeholder="Site">
+    <iframe id="embedsite"></iframe>
     <script>
+function loadText(text) {
+var html_string = text;
+document.getElementById('embedsite').srcdoc = html_string;
+};
 function myFunction() {
-	document.getElementById("embedsite").innerHTML = 'Loading...';
+        loadText('<br><br><p>Loading...</p>');
 	var site = document.getElementById('siteinput').value;
 	fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(site)}`)
                     .then(response => {
@@ -17,7 +50,7 @@ function myFunction() {
 		      document.getElementById("embedsite").innerHTML = 'Uh-oh, the website has run into an error. (Error code: Proxy&RES-NOT-OK)';
                       throw new Error('Network response was not ok.')
                     })
-                    .then(data => document.getElementById("embedsite").innerHTML = data.contents);
+                    .then(data => loadText(data.contents));
 };
     var siteinput = document.getElementById("siteinput");
 siteinput.addEventListener("keydown", function (e) {
