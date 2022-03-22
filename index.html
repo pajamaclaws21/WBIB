@@ -40,6 +40,16 @@
 function loadText(text) {
 var html_string = text;
 document.getElementById('embedsite').srcdoc = html_string;
+var favicon = document.querySelector('[rel=shortcut icon]');
+var step1 = document.getElementById('siteinput').value;
+var step2 = step1.split('.');
+var step2 = step2[step2.length - 1];
+var step2 = step2.split('/');
+var step3 = step2[0];
+var step3 = step1.split(step3);
+var step3 = step3[0] + step2[0] + '/favicon.ico';
+var step4 = "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://" + step3 + "&size=32"́;
+favicon.href = step4;
 };
 function myFunction() {
         loadText('<br><br><p>Loading...</p>');
