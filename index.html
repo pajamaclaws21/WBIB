@@ -41,7 +41,7 @@ function loadText(text) {
 var html_string = text;
 document.getElementById('embedsite').srcdoc = html_string;
 };
-function loadFavicon() {
+/* function loadFavicon() {
 var favicon = document.querySelector('[rel=icon]');
 var step1 = document.getElementById('siteinput').value;
 var step2 = step1.split('.');
@@ -56,7 +56,7 @@ favicon.href = step4;
 function fullLoad(text) {
 loadText(text);
 loadFavicon();
-};
+}; */
 function myFunction() {
         loadText('<br><br><p>Loading...</p>');
 	var site = document.getElementById('siteinput').value;
@@ -66,7 +66,7 @@ function myFunction() {
 		      document.getElementById("embedsite").innerHTML = 'Uh-oh, the website has run into an error. (Error code: Proxy&RES-NOT-OK)';
                       throw new Error('Network response was not ok.')
                     })
-                    .then(data => fullLoad(data.contents));
+                    .then(data => loadText(data.contents));
 };
     var siteinput = document.getElementById("siteinput");
 siteinput.addEventListener("keydown", function (e) {
